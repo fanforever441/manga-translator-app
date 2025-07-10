@@ -1,4 +1,6 @@
-Flask
-easyocr
-Pillow
+flask
 requests
+beautifulsoup4
+pillow
+easyocr
+
