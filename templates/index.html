@@ -1,26 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Manga Translator</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Image Translator</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Manga Translator</h1>
-    <form method="POST" enctype="multipart/form-data">
-      <label for="image">Upload an image with Chinese text:</label>
-      <input type="file" name="image" accept="image/*" required>
-      <button type="submit">Translate</button>
-    </form>
-
-    {% if output_image %}
-    <div class="result">
-      <h2>Translated Image:</h2>
-      <img src="{{ url_for('translated_image', filename=output_image) }}" alt="Translated Image">
-      <a href="{{ url_for('translated_image', filename=output_image) }}" download>Download Image</a>
-    </div>
-    {% endif %}
-  </div>
+  <h1>Upload Image to Translate</h1>
+  <form method="POST" enctype="multipart/form-data">
+    <input type="file" name="image">
+    <input type="submit" value="Translate">
+  </form>
+  {% if output_image %}
+    <h2>Translated Image:</h2>
+    <img src="/translated/{{ output_image }}" width="400">
+  {% endif %}
+  <p><a href="/translate_url">Or Translate via Web URL</a></p>
 </body>
 </html>
+
