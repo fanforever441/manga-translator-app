@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manga Translator</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Manga Translator</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <label for="image">Upload an image with Chinese text:</label>
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit">Translate</button>
+    </form>
+
+    {% if output_image %}
+    <div class="result">
+      <h2>Translated Image:</h2>
+      <img src="{{ url_for('translated_image', filename=output_image) }}" alt="Translated Image">
+      <a href="{{ url_for('translated_image', filename=output_image) }}" download>Download Image</a>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
