@@ -99,3 +99,8 @@ def index():
 @app.route("/translated/<filename>")
 def translated_image(filename):
     return send_from_directory(RESULT_FOLDER, filename)
+
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 10000))  # <- IMPORTANT
+    app.run(host='0.0.0.0', port=port)
